@@ -10,12 +10,16 @@
 @Html.DisplayFor(model => model.Type)
 
 <!-- List treats of this flavor type -->
-<ul>
+@if (Model.FlavorTreats.Count != 0)
+{
+  <ul>
   @foreach (FlavorTreat flavTreat in Model.FlavorTreats)
   {
-    <li>@Html.ActionLink($"{flavTreat.Treat.Name}", "Details", "Treats", new { id = flavTreat.Treat.Name })</li>
+    <li>@Html.ActionLink($"{flavTreat.Treat.Name}", "Details", "Treats", new { id = flavTreat.Treat.TreatId })</li>
   }
-</ul>
+  </ul>
+}
+
 
 <h2>Add @Html.DisplayFor(model => model.Type) Treat</h2>
 @using (Html.BeginForm("AddTreat", "Flavors"))
