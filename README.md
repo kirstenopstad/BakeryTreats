@@ -27,7 +27,7 @@ A student project demonstrating knowledge about user authentication and many-to-
 * ✅ A user should be able to navigate to a splash page that lists all treats and flavors. Users should be able to click on an individual treat or flavor to see all the treats/flavors that belong to it.
 
 Additionally, code will be reviewed on the following: 
-* Does at least one of your classes have all CRUD methods implemented in your app?
+* ✅ Does at least one of your classes have all CRUD methods implemented in your app? (Flavors, Treats)
 * ✅ Are you able to view both sides of the many-many relationship? For a particular instance of a class, are you able to view all of the instances of the other class that are related to it?
 * ✅ Are users able to register, log in and log out with Identity?
 * ✅ Is Create, Update and Delete functionality limited to authenticated users?
