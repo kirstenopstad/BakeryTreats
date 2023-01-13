@@ -1,10 +1,52 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid d-flex justify-content-start align-items-center mb-3">
+<nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #e3f2fd;">
+  <div class="container-fluid">
+    <!-- Bakery Home-->
     @Html.ActionLink("Bakery Home", "Index", "Home", null,  new { @class = "navbar-brand"})
-      <ul class="navbar-nav">
-        <li class="nav-item p-2">@Html.ActionLink("Treats", "Index", "Treats", null,  new { @class = "navbar-link"})</li>
-        <li class="nav-item p-2">@Html.ActionLink("Flavors", "Index", "Flavors", null,  new { @class = "navbar-link"})</li>    
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item p-2">
+          <!-- Treats -->
+          @Html.ActionLink("Treats", "Index", "Treats", null,  new { @class = "navbar-link"})
+        </li>
+        <li class="nav-item p-2">
+          <!-- Flavors -->
+          @Html.ActionLink("Flavors", "Index", "Flavors", null,  new { @class = "navbar-link"})
+        </li>
       </ul>
+
+      @* <form class="d-flex" role="search"> *@
+        @* <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> *@
+        @* <button class="btn btn-outline-success" type="submit">Search</button> *@
+      <div class="d-flex">
+        @if (User.Identity.IsAuthenticated)
+        {
+          <span class="navbar-text p-2">
+            Hello, @User.Identity.Name!
+          </span>
+          @using (Html.BeginForm("LogOff", "Account"))
+          {
+            <input type="submit" class="form-control me-2" value="Log out">
+          }
+        }
+        else
+        {
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item p-2">
+            <!-- Register -->
+            @Html.ActionLink("Register", "Register", "Account", null,  new { @class = "navbar-link"} )
+          </li>
+          <li class="nav-item p-2">
+            <!-- Login -->
+            @Html.ActionLink("Log In", "Login", "Account", null,  new { @class = "navbar-link"})
+          </li>
+        </ul>
+          
+        }
+      </div>
+      @* </form> *@
     </div>
   </div>
 </nav>
