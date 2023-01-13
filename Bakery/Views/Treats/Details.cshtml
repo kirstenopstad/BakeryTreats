@@ -5,9 +5,17 @@
 @model Bakery.Models.Treat
 
 <h1>Treat Details</h1>
-<!-- List treat details -->
-@Html.DisplayNameFor(model => model.Name): 
-@Html.DisplayFor(model => model.Name)
+<h2>@Html.DisplayFor(model => model.Name)</h2>
+
+<!-- Link to Edit treat details -->
+@Html.ActionLink("Edit", "Edit", new {id = Model.TreatId})
+
+<!-- Delete form -->
+@using (Html.BeginForm("Delete", "Treats"))
+{
+    @Html.HiddenFor(model => model.TreatId)
+    <input type="submit" value="Delete Treat" class="btn btn-danger"/>
+}
 
 <!-- List flavors associated with this treat type -->
 @if (Model.FlavorTreats.Count != 0)
@@ -20,6 +28,8 @@
     }
   </ul>
 }
+
+<!-- Form to add flavor to treat -->
 <h2>Add Flavor Profile for @Html.DisplayFor(model => model.Name) </h2>
 @using (Html.BeginForm("AddFlavor", "Treats"))
 {
@@ -29,4 +39,3 @@
   @Html.DropDownList("FlavorId")
   <input type="submit" value="Add Flavor"/>
 }
-
