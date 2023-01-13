@@ -40,6 +40,7 @@ namespace Bakery.Controllers
     }
 
     // Details
+    [AllowAnonymous]
     public ActionResult Details(int id)
     {
       // Pass in list of flavors
