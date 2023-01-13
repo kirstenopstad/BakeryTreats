@@ -1,0 +1,18 @@
+@{
+  Layout = "_Layout";
+}
+<h1>Add New Treat</h1>
+
+<!-- Indicate which model to POST to -->
+@model Bakery.Models.Treat
+
+<!-- Form to Add Flavor -->
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Name)
+  @Html.TextBoxFor(model => model.Name)
+  <!-- placeholder to Display validation error-->
+  <p>@Html.ValidationMessageFor(model => model.Name)</p>
+
+  <input type="submit" value="Add Treat">
+}
