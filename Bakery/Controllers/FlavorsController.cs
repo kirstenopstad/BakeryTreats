@@ -9,7 +9,38 @@ namespace Bakery.Controllers
 {
   public class FlavorsController : Controller
   {
-    // Routes
+    private readonly BakeryContext _db;
+
+    public FlavorsController (BakeryContext db)
+    {
+      _db = db;
+    }
+
+    // Index
+    public ActionResult Index()
+    {
+      return View(_db.Flavors.ToList());
+    }
+    // Create GET
+    public ActionResult Create()
+    {
+      return View();
+    }
+
+    // Create POST
+    [HttpPost]
+    public ActionResult Create(Flavor flavor)
+    {
+      _db.Flavors.Add(flavor);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
+    // Details
+    
+    // Edit  POST
+    
+    // Delete POST
 
   }
 }
