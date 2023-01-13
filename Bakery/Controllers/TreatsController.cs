@@ -34,9 +34,16 @@ namespace Bakery.Controllers
     [HttpPost]
     public ActionResult Create(Treat treat)
     {
-      _db.Treats.Add(treat);
-      _db.SaveChanges();
-      return RedirectToAction("Index");
+      if (!ModelState.IsValid)
+      {
+        return View(treat);
+      }
+      else
+      {
+        _db.Treats.Add(treat);
+        _db.SaveChanges();
+        return RedirectToAction("Index"); 
+      }
     }
 
     // Details
@@ -67,9 +74,39 @@ namespace Bakery.Controllers
       return RedirectToAction("Details", "Treats", new { id = treat.TreatId});
     }
 
+    // Edit
+    public ActionResult Edit(int id)
+    {
+      Treat thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
+      return View(thisTreat);
+    }
+
     // Edit  POST
+    [HttpPost]
+    public ActionResult Edit(Treat treat)
+    {
+      if (!ModelState.IsValid)
+      {
+        return View(treat);
+      }
+      else
+      {
+        _db.Treats.Update(treat);
+        _db.SaveChanges();
+        return RedirectToAction("Details", "Treats", new { id = treat.TreatId});
+      }
+
+    }
     
     // Delete POST
+    [HttpPost]
+    public ActionResult Delete(Treat treat)
+    {
+        _db.Treats.Remove(treat);
+        _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
 
   }
 
