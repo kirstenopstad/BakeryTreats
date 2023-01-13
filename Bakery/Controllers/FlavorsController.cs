@@ -40,7 +40,33 @@ namespace Bakery.Controllers
     }
 
     // Details
-    // [AllowAnonymous]
+    [AllowAnonymous]
+    public ActionResult Details(int id)
+    {
+      // Pass in list of treats
+      ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "Name");
+      Flavor thisFlavor = _db.Flavors
+                             .Include(flav => flav.FlavorTreats)
+                             .ThenInclude(flavTreats => flavTreats.Treat)
+                             .FirstOrDefault(flav => flav.FlavorId == id);
+      return View(thisFlavor);
+    }
+
+    // Add Treat
+    public ActionResult AddTreat(Flavor flavor, int treatId)
+    {
+      // Check if association already exists
+      # nullable enable
+      FlavorTreat? assoc = _db.FlavorTreats
+                              .FirstOrDefault(assoc => (assoc.FlavorId == flavor.FlavorId && assoc.TreatId == treatId));
+      # nullable disable
+      if (assoc == null && treatId != 0)
+      {
+        _db.FlavorTreats.Add( new FlavorTreat {FlavorId = flavor.FlavorId, TreatId = treatId});
+        _db.SaveChanges();
+      }
+      return RedirectToAction("Details", "Flavors", new { id = flavor.FlavorId});
+    }
     
     // Edit  POST
     
