@@ -35,7 +35,7 @@ Additionally, code will be reviewed on the following:
 * Project is in a polished, portfolio-quality state.
 * The prompt’s required functionality and baseline project requirements are in place by the deadline.
 
-<!-- ![Screenshot of Databases](imagelink) -->
+![Screenshot of Database Schema](Bakery/wwwroot/images/schema0.png)
 
 <!-- [Link to operational site](http://www.kirstenopstad.github.com/<REPOSITORY NAME>) -->
 
@@ -48,38 +48,31 @@ Additionally, code will be reviewed on the following:
 
 ## Setup/Installation Requirements
 
-#### Get copy of MySQL database
-1. Clone this repo to your workspace.
-2. Open MySQLWorkbench [Click here for instructions to download]
-3. Under Administration Tab, select Data Import/Restore
-  * Select 'Import from Self Contained File'
-  * Select ../animal-shelter-export.sql from the AnimalShelter directory
-  <!-- ![Screenshot of MySQL Import Settings](INSERT SCREENSHOT LINK) -->
-  * Select "New..." and set new schema name to **PROJECT-NAME**
-  * Select 'Start Import'
-4. You should now have a copy of the **PROJECT-NAME** database on your machine.
-
-#### Open project
-1. Navigate to the `Project Name` directory.
+1. Navigate to the `Bakery` directory.
 2. Create a file named `appsettings.json` with the following code. Be sure to update the Default Connection to your MySQL credentials.
 ```
 {
   "ConnectionStrings": {
-    "DefaultConnection": "Server=localhost;Port=3306;database=[PROJECT-NAME];uid=[YOUR-USERNAME-HERE];pwd=[YOUR-PASSWORD-HERE];",
+    "DefaultConnection": "Server=localhost;Port=3306;database=Bakery;uid=[YOUR-USERNAME-HERE];pwd=[YOUR-PASSWORD-HERE];",
   }
 }
 ```
-3. Install dependencies within the `Project Name` directory
+3. Install dependencies within the `Bakery` directory
 ```
 $ dotnet restore
-````
+```
 
-4. To build & run program in development mode 
+4. To build a local database
+```
+$ dotnet ef database update
+```
+
+5. To build & run program in development mode 
  ```
  $ dotnet run
  ```
 
-5. To build & run program in production mode 
+6. To build & run program in production mode 
  ```
  dotnet run --launch-profile "production"
  ```
@@ -95,7 +88,7 @@ $ dotnet restore
 
 MIT License
 
-Copyright (c) 2022 Kirsten Opstad 
+Copyright (c) 2023 Kirsten Opstad 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
