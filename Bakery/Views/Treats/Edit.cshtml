@@ -1,0 +1,21 @@
+@{
+  Layout = "_Layout";
+}
+<h1>Edit Treat</h1>
+
+<!-- Indicate which model to POST to -->
+@model Bakery.Models.Treat
+
+<!-- Form to Edit Flavor -->
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.TreatId)
+  
+  @Html.LabelFor(model => model.Name)
+  @Html.TextBoxFor(model => model.Name)
+  
+  <!-- placeholder to Display validation error-->
+  <p>@Html.ValidationMessageFor(model => model.Name)</p>
+
+  <input type="submit" value="Update">
+}
