@@ -1,0 +1,29 @@
+@{
+  Layout = "_Layout";
+}
+@using Bakery.Models
+@model Bakery.Models.Flavor
+
+<h1>Flavor Details</h1>
+<!-- List flavor details -->
+@Html.DisplayNameFor(model => model.Type): 
+@Html.DisplayFor(model => model.Type)
+
+<!-- List treats of this flavor type -->
+<ul>
+  @foreach (FlavorTreat flavTreat in Model.FlavorTreats)
+  {
+    <li>@Html.ActionLink($"{flavTreat.Treat.Name}", "Details", "Treats", new { id = flavTreat.Treat.Name })</li>
+  }
+</ul>
+
+<h2>Add @Html.DisplayFor(model => model.Type) Treat</h2>
+@using (Html.BeginForm("AddTreat", "Flavors"))
+{
+  @Html.HiddenFor(model => model.FlavorId)
+
+  @Html.Label("Treat")
+  @Html.DropDownList("TreatId")
+  <input type="submit" value="Add Treat"/>
+}
+
