@@ -9,7 +9,39 @@ namespace Bakery.Controllers
 {
   public class TreatsController : Controller
   {
-    // Routes
+    private readonly BakeryContext _db;
+
+    public TreatsController (BakeryContext db)
+    {
+      _db = db;
+    }
+
+    // Index
+    public ActionResult Index()
+    {
+      return View(_db.Treats.ToList());
+    }
+    // Create GET
+    public ActionResult Create()
+    {
+      return View();
+    }
+
+    // Create POST
+    [HttpPost]
+    public ActionResult Create(Treat treat)
+    {
+      _db.Treats.Add(treat);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
+    // Details
+    
+    // Edit  POST
+    
+    // Delete POST
 
   }
+
 }
