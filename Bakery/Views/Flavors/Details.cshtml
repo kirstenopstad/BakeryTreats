@@ -4,30 +4,29 @@
 @using Bakery.Models
 @model Bakery.Models.Flavor
 
-<h1>Flavor Details</h1>
-<!-- List flavor details -->
-@Html.DisplayNameFor(model => model.Type): 
-@Html.DisplayFor(model => model.Type)
-
-<!-- Edit flavor -->
-@using (Html.BeginForm("Edit", "Flavors"))
+<h1>@Html.DisplayFor(model => model.Type) Details</h1>
+<!-- Link to edit flavor -->
+@Html.ActionLink("Edit Flavor", "Edit", new { id = Model.FlavorId })
+<!-- Delete form -->
+@using (Html.BeginForm("Delete", "Flavors"))
 {
-  @Html.HiddenFor(model => model.FlavorId)
-
-  @Html.LabelFor(model => model.Type)
-  @Html.TextBoxFor(model => model.Type)
-  <input type="submit" value="Update"/>
+    @Html.HiddenFor(model => model.FlavorId)
+    <input type="submit" value="Delete Flavor" class="btn btn-danger"/>
 }
 
 <!-- List treats of this flavor type -->
 @if (Model.FlavorTreats.Count != 0)
 {
+    <h2>@Html.DisplayFor(model => model.Type) Treats</h2>
     @foreach (FlavorTreat flavTreat in Model.FlavorTreats)
     {
       <li>@Html.ActionLink($"{flavTreat.Treat.Name}", "Details", "Treats", new { id = flavTreat.Treat.TreatId })</li>
     }
 }
-
+else
+{
+  <p>No @Html.DisplayFor(model => model.Type) treats have been added yet.</p>
+}
 
 
 <h2>Add @Html.DisplayFor(model => model.Type) Treat</h2>
@@ -39,4 +38,3 @@
   @Html.DropDownList("TreatId")
   <input type="submit" value="Add Treat"/>
 }
-
