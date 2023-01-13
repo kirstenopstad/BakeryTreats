@@ -10,13 +10,13 @@
 @Html.DisplayFor(model => model.Name)
 
 <!-- List flavors associated with this treat type -->
-@if (Model.FlavorTreats)
+@if (Model.FlavorTreats.Count != 0)
 {
   <h2>Flavor Profiles</h2>
   <ul>
     @foreach (FlavorTreat flavTreat in Model.FlavorTreats)
     {
-      <li>@Html.ActionLink($"{flavTreat.Flavor.Type}", "Details", "Flavors", new { id = flavTreat.Flavor.Type })</li>
+      <li>@Html.ActionLink($"{flavTreat.Flavor.Type}", "Details", "Flavors", new { id = flavTreat.Flavor.FlavorId })</li>
     }
   </ul>
 }
