@@ -6,8 +6,10 @@ namespace Bakery.Models
   public class BakeryContext : IdentityDbContext<ApplicationUser>
   {
     // include DbSets as needed
+    public DbSet<Flavor> Flavors { get; set; }
+    public DbSet<Treat> Treats{ get; set; }
+    public DbSet<FlavorTreat> FlavorTreats { get; set; }
 
-    // does this need to be updated as well?
     public BakeryContext(DbContextOptions options) : base(options) { }
   }
 }
