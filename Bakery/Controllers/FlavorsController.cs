@@ -74,7 +74,7 @@ namespace Bakery.Controllers
     {
       _db.Flavors.Update(flavor);
       _db.SaveChanges();
-      RedirectToAction("Details", "Flavors", new { id = flavor.FlavorId});
+      return RedirectToAction("Details", "Flavors", new { id = flavor.FlavorId});
     }
     
     // Delete POST
