@@ -1,3 +1,19 @@
 @{
   Layout = "_Layout";
 }
+@using Bakery.Models
+
+<h1>Treats</h1>
+<!-- List all treats -->
+@if (Model.Count != 0)
+{
+  foreach (Treat treat in Model)
+  {
+    <!-- Link to Details -->
+    <li>@Html.ActionLink($"{treat.Name}", "Details", new {id = treat.TreatId})</li>
+  }
+}
+
+<!-- Link to Create new treat -->
+<p>@Html.ActionLink("Create", "Create")</p>
+
