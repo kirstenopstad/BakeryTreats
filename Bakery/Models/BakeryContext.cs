@@ -1,13 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
-namespace ProjectName.Models
+namespace Bakery.Models
 {
-  public class ProjectNameContext : IdentityDbContext<ApplicationUser>
+  public class BakeryContext : IdentityDbContext<ApplicationUser>
   {
     // include DbSets as needed
 
     // does this need to be updated as well?
-    public ProjectNameContext(DbContextOptions options) : base(options) { }
+    public BakeryContext(DbContextOptions options) : base(options) { }
   }
 }

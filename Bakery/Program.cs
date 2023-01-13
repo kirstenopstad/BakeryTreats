@@ -2,9 +2,9 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity;
-using ProjectName.Models;
+using Bakery.Models;
 
-namespace ProjectName
+namespace Bakery
 {
   class Program
   {
@@ -14,8 +14,8 @@ namespace ProjectName
 
       builder.Services.AddControllersWithViews();
 
-      // add EF Core as a service to our app, specify ProjectNameContext as the type
-      builder.Services.AddDbContext<ProjectNameContext>(
+      // add EF Core as a service to our app, specify BakeryContext as the type
+      builder.Services.AddDbContext<BakeryContext>(
                         dbContextOptions => dbContextOptions
                           .UseMySql(
                             builder.Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(builder.Configuration["ConnectionStrings:DefaultConnection"]
@@ -23,7 +23,7 @@ namespace ProjectName
                         )
                       );
       builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<LibraryContext>()
+                .AddEntityFrameworkStores<BakeryContext>()
                 .AddDefaultTokenProviders();
 
       WebApplication app = builder.Build();

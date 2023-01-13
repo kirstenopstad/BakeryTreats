@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
-// using ProjectName.Models;
+using Bakery.Models;
 
-namespace ProjectName.Controllers
+namespace Bakery.Controllers
 {
-  public class ItemsController : Controller
+  public class FlavorsController : Controller
   {
     // Routes
 

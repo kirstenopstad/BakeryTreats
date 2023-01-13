@@ -1,0 +1,10 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid d-flex justify-content-start align-items-center mb-3">
+    @Html.ActionLink("Bakery Home", "Index", "Home", null,  new { @class = "navbar-brand"})
+      <ul class="navbar-nav">
+        <li class="nav-item p-2">@Html.ActionLink("Treats", "Index", "Treats", null,  new { @class = "navbar-link"})</li>
+        <li class="nav-item p-2">@Html.ActionLink("Flavors", "Index", "Flavors", null,  new { @class = "navbar-link"})</li>    
+      </ul>
+    </div>
+  </div>
+</nav>

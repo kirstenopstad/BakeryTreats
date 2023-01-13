@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using System;
 
-namespace ProjectName.Models
+namespace Bakery.Models
 {
     public class ApplicationUser : IdentityUser
     {
