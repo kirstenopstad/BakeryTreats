@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -7,6 +8,7 @@ using Bakery.Models;
 
 namespace Bakery.Controllers
 {
+  [Authorize]
   public class TreatsController : Controller
   {
     private readonly BakeryContext _db;
@@ -17,6 +19,7 @@ namespace Bakery.Controllers
     }
 
     // Index
+    [AllowAnonymous]
     public ActionResult Index()
     {
       return View(_db.Treats.ToList());
