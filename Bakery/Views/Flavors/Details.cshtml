@@ -9,16 +9,25 @@
 @Html.DisplayNameFor(model => model.Type): 
 @Html.DisplayFor(model => model.Type)
 
+<!-- Edit flavor -->
+@using (Html.BeginForm("Edit", "Flavors"))
+{
+  @Html.HiddenFor(model => model.FlavorId)
+
+  @Html.LabelFor(model => model.Type)
+  @Html.TextBoxFor(model => model.Type)
+  <input type="submit" value="Update"/>
+}
+
 <!-- List treats of this flavor type -->
 @if (Model.FlavorTreats.Count != 0)
 {
-  <ul>
-  @foreach (FlavorTreat flavTreat in Model.FlavorTreats)
-  {
-    <li>@Html.ActionLink($"{flavTreat.Treat.Name}", "Details", "Treats", new { id = flavTreat.Treat.TreatId })</li>
-  }
-  </ul>
+    @foreach (FlavorTreat flavTreat in Model.FlavorTreats)
+    {
+      <li>@Html.ActionLink($"{flavTreat.Treat.Name}", "Details", "Treats", new { id = flavTreat.Treat.TreatId })</li>
+    }
 }
+
 
 
 <h2>Add @Html.DisplayFor(model => model.Type) Treat</h2>
