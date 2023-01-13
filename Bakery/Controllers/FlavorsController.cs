@@ -68,16 +68,37 @@ namespace Bakery.Controllers
       return RedirectToAction("Details", "Flavors", new { id = flavor.FlavorId});
     }
     
+    // Edit GET
+    public ActionResult Edit(int id)
+    {
+      Flavor thisFlavor = _db.Flavors
+                             .FirstOrDefault(flav => flav.FlavorId == id);
+      return View(thisFlavor);
+    }
+
     // Edit  POST
     [HttpPost]
     public ActionResult Edit(Flavor flavor)
     {
+      if (!ModelState.IsValid)
+      {
+        return View(flavor.FlavorId);
+      }
+      else 
+      {
       _db.Flavors.Update(flavor);
       _db.SaveChanges();
       return RedirectToAction("Details", "Flavors", new { id = flavor.FlavorId});
+      }
     }
     
     // Delete POST
+    public ActionResult Delete(Flavor flavor)
+    {
+      _db.Flavors.Remove(flavor);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
 
   }
 }
