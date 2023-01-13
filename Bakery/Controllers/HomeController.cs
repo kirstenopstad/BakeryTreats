@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ProjectName.Controllers
 {
-  public class HomeController : Controllers
+  public class HomeController : Controller
   {
     // Routes
     // [HttpGet(")]

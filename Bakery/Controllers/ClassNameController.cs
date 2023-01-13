@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace ProjectName.Controllers
 {
-  public class ItemsController : Controllers
+  public class ItemsController : Controller
   {
     // Routes
 
