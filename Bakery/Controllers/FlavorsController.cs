@@ -69,6 +69,13 @@ namespace Bakery.Controllers
     }
     
     // Edit  POST
+    [HttpPost]
+    public ActionResult Edit(Flavor flavor)
+    {
+      _db.Flavors.Update(flavor);
+      _db.SaveChanges();
+      RedirectToAction("Details", "Flavors", new { id = flavor.FlavorId});
+    }
     
     // Delete POST
 
