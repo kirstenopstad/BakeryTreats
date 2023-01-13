@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace Bakery.Models
 {
@@ -8,5 +9,6 @@ namespace Bakery.Models
     public int FlavorId { get; set; }
     [Required( ErrorMessage = "Flavor type is required!")]
     public string Type { get; set; }
+    public List<FlavorTreat> FlavorTreats { get; set; }
   }
 }
