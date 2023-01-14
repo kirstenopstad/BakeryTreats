@@ -75,6 +75,16 @@ namespace Bakery.Controllers
       }
       return RedirectToAction("Details", "Flavors", new { id = flavor.FlavorId});
     }
+
+    // Remove Treat
+    public ActionResult RemoveTreat(int id)
+    {
+      FlavorTreat thisFlavorTreat = _db.FlavorTreats.FirstOrDefault(flavTreat => flavTreat.FlavorTreatId == id);
+      _db.FlavorTreats.Remove(thisFlavorTreat);
+      _db.SaveChanges();
+      return RedirectToAction("Details", "Flavors", new { id = thisFlavorTreat.FlavorId});
+    }
+    
     
     // Edit GET
     public ActionResult Edit(int id)
@@ -90,7 +100,7 @@ namespace Bakery.Controllers
     {
       if (!ModelState.IsValid)
       {
-        return View(flavor.FlavorId);
+        return View(flavor);
       }
       else 
       {
