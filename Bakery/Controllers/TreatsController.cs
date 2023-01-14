@@ -74,6 +74,15 @@ namespace Bakery.Controllers
       return RedirectToAction("Details", "Treats", new { id = treat.TreatId});
     }
 
+    // Remove Flavor
+    public ActionResult RemoveFlavor(int id)
+    {
+      FlavorTreat thisFlavorTreat = _db.FlavorTreats.FirstOrDefault(flavTreat => flavTreat.FlavorTreatId == id);
+      _db.FlavorTreats.Remove(thisFlavorTreat);
+      _db.SaveChanges();
+      return RedirectToAction("Details", "Treats", new { id = thisFlavorTreat.TreatId});
+    }
+
     // Edit
     public ActionResult Edit(int id)
     {
