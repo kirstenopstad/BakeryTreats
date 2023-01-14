@@ -17,7 +17,7 @@
 
 ## Description
 
-A student project demonstrating knowledge about user authentication and many-to-many relationships.
+A student project demonstrating knowledge about user authentication, authorization and many-to-many relationships.
 
 ### Objectives (MVP)
 
@@ -32,16 +32,16 @@ Additionally, code will be reviewed on the following:
 * ✅ Are users able to register, log in and log out with Identity?
 * ✅ Is Create, Update and Delete functionality limited to authenticated users?
 * ✅ Build files and sensitive information are included in .gitignore file and are not in Git history, and includes instructions on how to create the appsettings.json and set up the project.
-* Project is in a polished, portfolio-quality state.
-* The prompt’s required functionality and baseline project requirements are in place by the deadline.
+* ✅ Project is in a polished, portfolio-quality state.
+* ✅ The prompt’s required functionality and baseline project requirements are in place by the deadline.
 
 ![Screenshot of Database Schema](Bakery/wwwroot/images/schema0.png)
 
 <!-- [Link to operational site](http://www.kirstenopstad.github.com/<REPOSITORY NAME>) -->
 
 ### Goals
-1. Meet MVP
-2. Add basic styling
+1. ✅ Meet MVP
+2. ✅ Add basic styling
 3. Stretch: Have separate roles for admins and logged-in users. Only admins should be able to add, update and delete.
 4. Stretch: Add an order form that only logged-in users can access. A logged-in user should be able to create, read, update and delete their own order.
 6. Strech: Add functionality of Bakery
