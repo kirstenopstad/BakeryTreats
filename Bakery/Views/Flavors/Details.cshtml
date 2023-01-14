@@ -4,29 +4,47 @@
 @using Bakery.Models
 @model Bakery.Models.Flavor
 
-<h1>@Html.DisplayFor(model => model.Type) Details</h1>
-<!-- Link to edit flavor -->
-@Html.ActionLink("Edit Flavor", "Edit", new { id = Model.FlavorId })
-<!-- Delete form -->
-@using (Html.BeginForm("Delete", "Flavors"))
-{
-    @Html.HiddenFor(model => model.FlavorId)
-    <input type="submit" value="Delete Flavor" class="btn btn-danger"/>
-}
+<div class="d-flex align-items-center">
+  <h1 class="p-2">@Html.DisplayFor(model => model.Type) Flavor Details</h1>
 
-<!-- List treats of this flavor type -->
-@if (Model.FlavorTreats.Count != 0)
-{
-    <h2>@Html.DisplayFor(model => model.Type) Treats</h2>
+  <!-- Delete form -->
+  @using (Html.BeginForm("Delete", "Flavors"))
+  {
+      @Html.HiddenFor(model => model.FlavorId)
+      <input type="submit" value="Delete Flavor" class="btn btn-danger"/>
+  }
+
+  <!-- Link to edit flavor -->
+  <span class="p-2">@Html.ActionLink("Edit Flavor", "Edit", new { id = Model.FlavorId })</span>
+</div>
+<table class="table">
+  <thead>
+    <th>@Html.DisplayFor(model => model.Type) Treats</th>
+  </thead>
+  <!-- List treats of this flavor type -->
+  @if (Model.FlavorTreats.Count != 0)
+  {
     @foreach (FlavorTreat flavTreat in Model.FlavorTreats)
     {
-      <li>@Html.ActionLink($"{flavTreat.Treat.Name}", "Details", "Treats", new { id = flavTreat.Treat.TreatId })</li>
+      <tr>
+        <td>
+        @Html.ActionLink($"{flavTreat.Treat.Name}", "Details", "Treats", new { id = flavTreat.Treat.TreatId })
+        </td>
+      </tr>
     }
-}
-else
-{
-  <p>No @Html.DisplayFor(model => model.Type) treats have been added yet.</p>
-}
+  }
+  else
+  {
+    <tr>
+      <td>
+        <p>No @Html.DisplayFor(model => model.Type) treats have been added yet.</p>
+      </td>
+    </tr>
+  }
+
+</table>
+
+
 
 
 <h2>Add @Html.DisplayFor(model => model.Type) Treat</h2>
@@ -34,7 +52,6 @@ else
 {
   @Html.HiddenFor(model => model.FlavorId)
 
-  @Html.Label("Treat")
   @Html.DropDownList("TreatId")
   <input type="submit" value="Add Treat"/>
 }

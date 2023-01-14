@@ -4,31 +4,46 @@
 @using Bakery.Models
 @model Bakery.Models.Treat
 
-<h1>Treat Details</h1>
-<h2>@Html.DisplayFor(model => model.Name)</h2>
+<div class="d-flex align-items-center"> 
+  <h1 class="p-2">@Html.DisplayFor(model => model.Name) Details</h1>
 
-<!-- Link to Edit treat details -->
-@Html.ActionLink("Edit", "Edit", new {id = Model.TreatId})
+  <!-- Delete form -->
+  @using (Html.BeginForm("Delete", "Treats"))
+  {
+      @Html.HiddenFor(model => model.TreatId)
+      <input type="submit" value="Delete Treat" class="btn btn-danger"/>
+  }
 
-<!-- Delete form -->
-@using (Html.BeginForm("Delete", "Treats"))
-{
-    @Html.HiddenFor(model => model.TreatId)
-    <input type="submit" value="Delete Treat" class="btn btn-danger"/>
-}
+  <!-- Link to Edit treat details -->
+  <span class="p-2">@Html.ActionLink("Edit", "Edit", new {id = Model.TreatId})</span>
+</div>
 
-<!-- List flavors associated with this treat type -->
-@if (Model.FlavorTreats.Count != 0)
-{
-  <h2>Flavor Profiles</h2>
-  <ul>
+
+<table class="table">
+  <thead>
+    <th>Flavor Profile</th>
+  </thead>
+  <!-- List flavors associated with this treat type -->
+  @if (Model.FlavorTreats.Count != 0)
+  {
     @foreach (FlavorTreat flavTreat in Model.FlavorTreats)
     {
-      <li>@Html.ActionLink($"{flavTreat.Flavor.Type}", "Details", "Flavors", new { id = flavTreat.Flavor.FlavorId })</li>
+      <tr>
+        <td>
+        @Html.ActionLink($"{flavTreat.Flavor.Type}", "Details", "Flavors", new { id = flavTreat.Flavor.FlavorId })
+        </td>
+      </tr>
     }
-  </ul>
-}
-
+  }
+  else
+  {
+    <tr>
+      <td>
+        <p>>No flavor profiles have been added yet.</p>
+      </td>
+    </tr>
+  }
+</table>
 <!-- Form to add flavor to treat -->
 <h2>Add Flavor Profile for @Html.DisplayFor(model => model.Name) </h2>
 @using (Html.BeginForm("AddFlavor", "Treats"))
