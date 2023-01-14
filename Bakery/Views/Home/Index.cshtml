@@ -2,34 +2,40 @@
   Layout = "_Layout";
 }
 @using Bakery.Models
-
 <h1>Welcome to Pierre's Bakery!</h1>
-<h2>Treats</h2>
-@if (Model["treats"].Length != 0)
-{
-  <ul>
-    @foreach (Treat treat in Model["treats"])
+<div class="d-flex justify-content-start">
+  <div class="p-3">
+    
+    <h2>Treats</h2>
+    @if (Model["treats"].Length != 0)
     {
-      <li>@Html.ActionLink($"{treat.Name}", "Details", "Treats", new { id = treat.TreatId})</li>
+      <ul>
+        @foreach (Treat treat in Model["treats"])
+        {
+          <li>@Html.ActionLink($"{treat.Name}", "Details", "Treats", new { id = treat.TreatId})</li>
+        }
+      </ul>
     }
-  </ul>
-}
-else
-{
-  <p>No treats have been added yet!</p>
-}
+    else
+    {
+      <p>No treats have been added yet!</p>
+    }
+  </div>
 
-<h2>Flavors</h2>
-@if (Model["flavors"].Length != 0)
-{
-  <ul>
-    @foreach (Flavor flavor in Model["flavors"])
-    { 
-      <li>@Html.ActionLink($"{flavor.Type}", "Details", "Flavors", new { id = flavor.FlavorId})</li>
+  <div class="p-3">
+    <h2>Flavors</h2>
+    @if (Model["flavors"].Length != 0)
+    {
+      <ul>
+        @foreach (Flavor flavor in Model["flavors"])
+        { 
+          <li>@Html.ActionLink($"{flavor.Type}", "Details", "Flavors", new { id = flavor.FlavorId})</li>
+        }
+      </ul>
     }
-  </ul>
-}
-else
-{
-  <p>No flavors have been added yet!</p>
-}
+    else
+    {
+      <p>No flavors have been added yet!</p>
+    }
+  </div>
+</div>
