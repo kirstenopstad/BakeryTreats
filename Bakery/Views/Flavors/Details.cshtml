@@ -17,18 +17,27 @@
   <!-- Link to edit flavor -->
   <span class="p-2">@Html.ActionLink("Edit Flavor", "Edit", new { id = Model.FlavorId })</span>
 </div>
+
+<!-- List treats of this flavor type -->
 <table class="table">
   <thead>
     <th>@Html.DisplayFor(model => model.Type) Treats</th>
+    <th>Manage</th>
   </thead>
-  <!-- List treats of this flavor type -->
   @if (Model.FlavorTreats.Count != 0)
   {
     @foreach (FlavorTreat flavTreat in Model.FlavorTreats)
     {
       <tr>
         <td>
-        @Html.ActionLink($"{flavTreat.Treat.Name}", "Details", "Treats", new { id = flavTreat.Treat.TreatId })
+          @Html.ActionLink($"{flavTreat.Treat.Name}", "Details", "Treats", new { id = flavTreat.Treat.TreatId })
+        </td>
+        <td>
+          <!-- Remove Treat -->
+          @using (Html.BeginForm("RemoveTreat","Flavors", routeValues: new { id = flavTreat.FlavorTreatId }))
+          {
+            <input type="submit" value="Remove from Flavor"/>
+          }
         </td>
       </tr>
     }

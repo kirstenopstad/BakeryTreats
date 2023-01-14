@@ -18,19 +18,27 @@
   <span class="p-2">@Html.ActionLink("Edit", "Edit", new {id = Model.TreatId})</span>
 </div>
 
-
+<!-- List flavors associated with this treat type -->
 <table class="table">
   <thead>
     <th>Flavor Profile</th>
+    <th>Manage</th>
   </thead>
-  <!-- List flavors associated with this treat type -->
   @if (Model.FlavorTreats.Count != 0)
   {
     @foreach (FlavorTreat flavTreat in Model.FlavorTreats)
     {
       <tr>
         <td>
-        @Html.ActionLink($"{flavTreat.Flavor.Type}", "Details", "Flavors", new { id = flavTreat.Flavor.FlavorId })
+          @Html.ActionLink($"{flavTreat.Flavor.Type}", "Details", "Flavors", new { id = flavTreat.Flavor.FlavorId })
+        </td>
+        <td>
+          <!-- Remove Flavor -->
+          @using (Html.BeginForm("RemoveFlavor","Treats", routeValues: new { id = flavTreat.FlavorTreatId }))
+          {
+            <input type="submit" value="Remove Flavor"/>
+          }
+          
         </td>
       </tr>
     }
@@ -39,7 +47,7 @@
   {
     <tr>
       <td>
-        <p>>No flavor profiles have been added yet.</p>
+        <p>No flavor profiles have been added yet.</p>
       </td>
     </tr>
   }
