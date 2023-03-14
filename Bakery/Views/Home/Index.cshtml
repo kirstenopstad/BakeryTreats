@@ -12,7 +12,8 @@
 <div class="d-flex justify-content-evenly">
   <div class="p-3">
     
-    <h2>Treats</h2>
+    <h2>@Html.ActionLink("Treats", "Index", "Treats")</h2>
+    
     @if (Model["treats"].Length != 0)
     {
       <ul class="list-group">
@@ -29,7 +30,7 @@
   </div>
 
   <div class="p-3">
-    <h2>Flavors</h2>
+    <h2>@Html.ActionLink("Flavors", "Index", "Flavors")</h2>
     @if (Model["flavors"].Length != 0)
     {
       <ul class="list-group">
