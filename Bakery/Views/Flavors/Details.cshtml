@@ -61,6 +61,7 @@
 {
   @Html.HiddenFor(model => model.FlavorId)
 
-  @Html.DropDownList("TreatId")
+  @Html.DropDownList("TreatId", null, new {@class="form-select"})
+  <br>
   <input type="submit" value="Add Treat"/>
 }

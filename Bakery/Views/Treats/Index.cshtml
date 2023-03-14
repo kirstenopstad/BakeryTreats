@@ -15,7 +15,8 @@
       <li class="list-group-item list-group-item-action">@Html.ActionLink($"{treat.Name}", "Details", new {id = treat.TreatId})</li>
     }
   }
-  <!-- Link to Create new treat -->
-  <li class="list-group-item list-group-item-action list-group-item-success">@Html.ActionLink("Add Treat", "Create")</li>
 <ul>
+  <br>
+  <!-- Link to Create new treat -->
+  <button>@Html.ActionLink("Add Treat", "Create", null, new {@class ="btn"})</button>
 
