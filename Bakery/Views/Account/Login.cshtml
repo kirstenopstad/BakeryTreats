@@ -16,17 +16,26 @@
   @Html.ValidationSummary("Please fix the following error(s) and resubmit form.")
 }
 
+
 @using (Html.BeginForm())
 {
-  @Html.LabelFor(user => user.Email)
-  @Html.TextBoxFor(user=> user.Email)
-  <br>
-
-  @Html.LabelFor(user=> user.Password)
-  @Html.EditorFor(user=> user.Password)
-  <br>
+  <div class="mb-3">
+    <label for="emailInput" class="form-label">
+      @Html.LabelFor(user => user.Email)
+    </label>
+    @Html.TextBoxFor(user => user.Email, null , new {@class = "form-control", @placeholder="name@example.com", @id="emailInput"})
+  </div>
+  <div class="mb-3">
+    <label for="passwordInput" class="form-label">
+      @Html.LabelFor(user => user.Password)
+    </label>
+    @Html.EditorFor(user => user.Password, 
+      new { htmlAttributes = 
+        new {@class  = "form-control", @id="passwordInput" }, })
+  </div>
 
   <input type ="submit" value="Log In"/>
 }
 <br>
-<p>Don't have an account yet? @Html.ActionLink("Register", "Register", "Account")</p>
+<p>Don't have an account yet? 
+  @Html.ActionLink("Register", "Register", "Account", new {@class="btn"}) </p>
