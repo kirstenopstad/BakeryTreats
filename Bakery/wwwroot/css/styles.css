@@ -20,6 +20,10 @@ p {
   margin: auto;
 }
 
-h1, h2, h3 {
+h1 {
   text-align: center;
+}
+
+.note {
+  color: gray;
 }
