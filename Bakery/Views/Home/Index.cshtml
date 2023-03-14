@@ -2,17 +2,23 @@
   Layout = "_Layout";
 }
 @using Bakery.Models
-<img src="~/images/logo.png" width="500px">
-<div class="d-flex justify-content-start">
+<img src="~/images/logo.png" class="splash-logo">
+<div class="p-3">
+  <h1>BAKE | Treats + Coffee </h1>
+    <p>We are a hip cafe & bakery located on the East of the LA River. Serving pastries, coffee and more. We love serving and supporting those in our community. Our entire coffee selection is fair trade, we only use farm-fresh eggs, and we source our produce locally.</p>
+    <br>
+    <p>Stop by for a coffee + treat, we love to see our neighbors!</p>
+</div>
+<div class="d-flex justify-content-evenly">
   <div class="p-3">
     
     <h2>Treats</h2>
     @if (Model["treats"].Length != 0)
     {
-      <ul>
+      <ul class="list-group">
         @foreach (Treat treat in Model["treats"])
         {
-          <li>@Html.ActionLink($"{treat.Name}", "Details", "Treats", new { id = treat.TreatId})</li>
+          <li class="list-group-item list-group-item-action">@Html.ActionLink($"{treat.Name}", "Details", "Treats", new { id = treat.TreatId})</li>
         }
       </ul>
     }
@@ -26,10 +32,10 @@
     <h2>Flavors</h2>
     @if (Model["flavors"].Length != 0)
     {
-      <ul>
+      <ul class="list-group">
         @foreach (Flavor flavor in Model["flavors"])
         { 
-          <li>@Html.ActionLink($"{flavor.Type}", "Details", "Flavors", new { id = flavor.FlavorId})</li>
+          <li li class="list-group-item list-group-item-action">@Html.ActionLink($"{flavor.Type}", "Details", "Flavors", new { id = flavor.FlavorId})</li>
         }
       </ul>
     }

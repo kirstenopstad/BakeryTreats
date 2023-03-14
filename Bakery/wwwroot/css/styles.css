@@ -2,3 +2,23 @@ a {
   color: black;
   text-decoration: none;
 }
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.splash-logo {
+  width: 500px;
+  display: block;
+  margin: auto;
+}
+
+p {
+  max-width: 500px;
+  display: block;
+  margin: auto;
+}
+
+h1, h2, h3 {
+  text-align: center;
+}
