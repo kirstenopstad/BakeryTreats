@@ -19,6 +19,10 @@
 
 A project demonstrating knowledge of user authentication, authorization and many-to-many relationships. Data is stored in a SQL database with treats and flavors relating in a many-to-many relationship, meaning a cookie could be both sweet and savory while many distinct treats (cake, cookie, hand pie) could all be described as sweet.
 
+![Screenshot of Database Schema](Bakery/wwwroot/images/schema0.png)
+
+__Check out the [operational site](https://ko-bakery.azurewebsites.net/)! Hosted by Azure.__
+
 ### Objectives (MVP)
 
 #### Required Features
@@ -34,10 +38,6 @@ Additionally, code will be reviewed on the following:
 * ✅ Build files and sensitive information are included in .gitignore file and are not in Git history, and includes instructions on how to create the appsettings.json and set up the project.
 * ✅ Project is in a polished, portfolio-quality state.
 * ✅ The prompt’s required functionality and baseline project requirements are in place by the deadline.
-
-![Screenshot of Database Schema](Bakery/wwwroot/images/schema0.png)
-
-<!-- [Link to operational site](http://www.kirstenopstad.github.com/<REPOSITORY NAME>) -->
 
 ### Goals
 1. ✅ Meet MVP
