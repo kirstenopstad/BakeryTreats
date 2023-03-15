@@ -1,4 +1,4 @@
-# Bakery Treats
+# [Bakery Treats](https://ko-bakery.azurewebsites.net/)
 
 #### By Kirsten Opstad
 
@@ -17,7 +17,7 @@
 
 ## Description
 
-A student project demonstrating knowledge about user authentication, authorization and many-to-many relationships.
+A project demonstrating knowledge of user authentication, authorization and many-to-many relationships. Data is stored in a SQL database with treats and flavors relating in a many-to-many relationship, meaning a cookie could be both sweet and savory while many distinct treats (cake, cookie, hand pie) could all be described as sweet.
 
 ### Objectives (MVP)
 
