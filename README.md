@@ -14,6 +14,7 @@
 * MySQL
 * LINQ
 * Identity
+* Azure
 
 ## Description
 
